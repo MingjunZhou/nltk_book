@@ -40,6 +40,14 @@ def storing_taggers(tagger):
     print tagger.tag(tokens)
 
 
+def performance_limitations(tagged_corpus):
+    cfd = nltk.ConditionalFreqDist(
+            ((x[1], y[1], z[0]), z[1])
+            for sent in tagged_corpus 
+            for x, y, z in nltk.trigrams(sent))
+    ambiguous_contexts = [c for c in cfd.conditions() if len(cfd[c]) > 1]
+    print 1.0 * sum(cfd[c].N() for c in ambiguous_contexts) / cfd.N() 
+
 if __name__ == '__main__':
     brown_tagged_sents = brown.tagged_sents(categories='news')
     brown_sents = brown.sents(categories='news')
@@ -58,3 +66,5 @@ if __name__ == '__main__':
     t2 = combining_tagging(train_sents, test_sents)
     t2.evaluate(test_sents)
     storing_taggers(t2)
+
+    performance_limitations(brown_tagged_sents)
