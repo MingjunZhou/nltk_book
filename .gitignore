@@ -38,3 +38,40 @@ nosetests.xml
 # data files
 data
 solutions/*.txt
+# Django stuff:
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+
+\\
+
+*~
+.#*
+*.lprof
+*.swp
+*.swo
+.DS_Store
+.idlerc/
+
+
+dist/
+doc/build/
+doc/auto_examples/
+doc/modules/generated/
+doc/datasets/generated/
+*.pdf
+pip-log.txt
+.coverage
+coverage
+tags
+covtype.data.gz
+
+*.nt.bz2
+*.tar.gz
+*.tgz
+
+*.prefs
+.pydevproject
